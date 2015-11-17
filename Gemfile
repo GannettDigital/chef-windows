@@ -1,14 +1,38 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
+
+group :rake do
+  gem 'rake'
+  gem 'tomlrb'
+end
+
+group :lint do
+  gem 'foodcritic', '~> 5.0'
+  gem 'rubocop', '~> 0.34'
+end
+
+group :unit do
+  gem 'berkshelf',  '~> 4.0'
+  gem 'chefspec',   '~> 4.4'
+end
+
+group :kitchen_common do
+  gem 'test-kitchen', '~> 1.4'
+end
+
+group :kitchen_vagrant do
+  gem 'kitchen-vagrant', '~> 0.19'
+end
+
+group :kitchen_pester do
+  gem 'kitchen-pester'
+end
+
+group :kitchen_cloud do
+  gem 'kitchen-digitalocean'
+  gem 'kitchen-ec2'
+end
 
 group :development do
-  # The current official branch is the 'windows-guest-support' branch, but it isn't working for me right now.
-  # gem "test-kitchen", :git => 'https://github.com/test-kitchen/test-kitchen.git', :branch => 'windows-guest-support'
-  gem 'test-kitchen', git: 'https://github.com/jdmundrawala/test-kitchen.git', :branch => 'Transport'
-
-  # afiune/Transport supports copying files from Windows -> Windows
-  # gem 'kitchen-vagrant', git: 'https://github.com/jdmundrawala/kitchen-vagrant.git', :branch => 'Transport'
-  gem 'kitchen-vagrant', git: 'https://github.com/afiune/kitchen-vagrant.git', :branch => 'Transport'
-
-  gem "berkshelf"
-  gem "vagrant-wrapper", ">= 2.0"
+  gem 'winrm-transport'
+  gem 'stove'
 end
